@@ -3,8 +3,11 @@ import AppText from "./components/AppText";
 import AppButton from "./components/AppButton";
 import AppTextInput from "./components/AppTextInput";
 import { colors } from "./constants/colors";
+import useLogin from "./hooks/useLogin";
 
 export default function App() {
+  const { username, password, setPassword, setUsername, handleLogin } =
+    useLogin();
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.welcomeContainer}>
@@ -14,16 +17,27 @@ export default function App() {
         <AppText>Please proceed by logging in.</AppText>
       </View>
       <View style={styles.loginFormContainer}>
-        <AppTextInput placeholder="Username..." />
         <AppTextInput
+          value={username}
+          onChangeText={setUsername}
+          placeholder="Username..."
+        />
+        <AppTextInput
+          value={password}
+          onChangeText={setPassword}
           containerStyle={{ marginTop: 20 }}
           placeholder="Password..."
+          secureTextEntry
         />
       </View>
       <AppText style={styles.forgotPassword} color="primary">
         Forgot password?
       </AppText>
-      <AppButton text="Login" containerStyle={styles.loginButton} />
+      <AppButton
+        onPress={handleLogin}
+        text="Login"
+        containerStyle={styles.loginButton}
+      />
       <View style={styles.signUpContainer}>
         <AppText>Don't have an account?</AppText>
         <AppText style={styles.signUpButton} variant="h4" color="primary">
