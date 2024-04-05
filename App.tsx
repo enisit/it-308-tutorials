@@ -1,7 +1,9 @@
-import App from './src';
+import { NavigationContainer } from "@react-navigation/native";
+import App from "./src";
 export default function AppContainer() {
   return (
-    <App />
+    <NavigationContainer>
+      <App />
+    </NavigationContainer>
   );
 }
-
