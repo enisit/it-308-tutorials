@@ -4,6 +4,7 @@ import {
   SignUpScreen,
   ForgotPasswordScreen,
   HomeScreen,
+  DetailsScreen,
 } from "../screens";
 import { colors } from "../constants/colors";
 import { useSelector } from "react-redux";
@@ -14,6 +15,7 @@ export type RootStackParams = {
   SignUp: undefined;
   ForgotPassword: undefined;
   Home: undefined;
+  Details: { id: string };
 };
 
 const RootStack = createNativeStackNavigator<RootStackParams>();
@@ -23,7 +25,10 @@ const RootStackNav = () => {
   return (
     <RootStack.Navigator screenOptions={{ headerTintColor: colors.primary }}>
       {isAuthenticated ? (
-        <RootStack.Screen name="Home" component={HomeScreen} />
+        <>
+          <RootStack.Screen name="Home" component={HomeScreen} />
+          <RootStack.Screen name="Details" component={DetailsScreen} />
+        </>
       ) : (
         <>
           <RootStack.Screen

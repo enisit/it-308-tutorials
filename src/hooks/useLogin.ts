@@ -7,8 +7,8 @@ const CORRECT_PASSWORD = "mobile";
 
 const useLogin = () => {
   const dispatch = useDispatch();
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("mobile");
+  const [password, setPassword] = useState("mobile");
 
   const handleLogin = () => {
     if (username === CORRECT_USERNAME && password === CORRECT_PASSWORD) {
